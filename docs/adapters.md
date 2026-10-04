@@ -4,10 +4,12 @@
 
 ```js
 // support-agent.mjs
-import { serveAgent } from '@causign/sdk';
+import { serveAgent } from "@causign/sdk";
 
 await serveAgent(async (input, context) => {
-  return context.callTool('lookup', input, async () => ({ customer: 'Local fixture' }));
+  return context.callTool("lookup", input, async () => ({
+    customer: "Local fixture",
+  }));
 });
 ```
 
@@ -24,11 +26,19 @@ observation require explicit opt-in and truthful instrumentation. Consult SDK
 ## Vercel AI SDK
 
 ```ts
-import { serveAgent } from '@causign/sdk';
-import { createVercelAdapter, vercelBridgeOptions } from '@causign/adapter-vercel';
+import { serveAgent } from "@causign/sdk";
+import {
+  createVercelAdapter,
+  vercelBridgeOptions,
+} from "@causign/adapter-vercel";
 
 await serveAgent(
-  createVercelAdapter({ model, tools, instructions: 'Help the user', maxSteps: 20 }),
+  createVercelAdapter({
+    model,
+    tools,
+    instructions: "Help the user",
+    maxSteps: 20,
+  }),
   vercelBridgeOptions,
 );
 ```
@@ -37,11 +47,11 @@ await serveAgent(
 `ai@7.0.127`. Input accepts either `{ prompt: 'hello' }` or nonempty user/assistant
 text `messages`. Output is `{ text: string }`. Always use `vercelBridgeOptions`.
 
-| Supported | Outside this adapter's MVP |
-| --- | --- |
-| Output, messages, actual provider calls, available usage | Cost estimation |
-| Local tool request/execution/result/rejection evidence | Native approvals |
-| Tool interception and cooperative cancellation | Streaming or model interception |
+| Supported                                                | Outside this adapter's MVP      |
+| -------------------------------------------------------- | ------------------------------- |
+| Output, messages, actual provider calls, available usage | Cost estimation                 |
+| Local tool request/execution/result/rejection evidence   | Native approvals                |
+| Tool interception and cooperative cancellation           | Streaming or model interception |
 
 Tools need local execute functions and JSON values. Provider/declaration-only
 tools, `needsApproval`, async generators and async iterable results are

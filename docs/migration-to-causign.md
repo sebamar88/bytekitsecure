@@ -3,18 +3,18 @@
 The MVP has been renamed from Agentest to Causign. This is a coordinated breaking
 rename, not an alias layer. Migrate runner and adapters together.
 
-| Previous name | Current name |
-| --- | --- |
-| `@agentest/*` packages | `@causign/*` |
-| `agentest` executable | `causign` |
-| `agentest.config.ts` | `causign.config.ts` |
-| `*.agentest.ts` scenario discovery | `*.causign.ts` |
-| `.agentest/results` default artifacts | `.causign/results` |
-| `agentest/1` wire protocol | `causign/1` |
-| `https://agentest.dev/schemas/` schema IDs | `https://causign.dev/schemas/` |
-| `AgentestConfig` type | `CausignConfig` |
+| Previous name                                               | Current name                                             |
+| ----------------------------------------------------------- | -------------------------------------------------------- |
+| `@agentest/*` packages                                      | `@causign/*`                                             |
+| `agentest` executable                                       | `causign`                                                |
+| `agentest.config.ts`                                        | `causign.config.ts`                                      |
+| `*.agentest.ts` scenario discovery                          | `*.causign.ts`                                           |
+| `.agentest/results` default artifacts                       | `.causign/results`                                       |
+| `agentest/1` wire protocol                                  | `causign/1`                                              |
+| `https://agentest.dev/schemas/` schema IDs                  | `https://causign.dev/schemas/`                           |
+| `AgentestConfig` type                                       | `CausignConfig`                                          |
 | `AGENTEST_PYTHON`, `AGENTEST_PNPM`, `AGENTEST_PACKED_STORE` | `CAUSIGN_PYTHON`, `CAUSIGN_PNPM`, `CAUSIGN_PACKED_STORE` |
-| `$agentest` assistant skill | `$causign` |
+| `$agentest` assistant skill                                 | `$causign`                                               |
 
 Update package imports and dependencies, lockfile, scenario/config filenames,
 scripts, CI artifact paths and custom adapters. Adapters must advertise and emit

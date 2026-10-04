@@ -1,7 +1,27 @@
 {
- "name":"@causign/adapter-claude-code","version":"0.1.1",
-  "description": "Claude Code discovery and output adapter for Causign","type":"module",
- "exports":{".":{"types":"./dist/index.d.ts","import":"./dist/index.js"},"./bin":"./dist/bin.js"},
- "bin":{"causign-claude-code":"./dist/bin.js"},"files":["dist","README.md"],
- "dependencies":{"@causign/runtime":"workspace:*","yaml":"2.8.1"},"engines":{"node":">=22"}
+  "name": "@causign/adapter-claude-code",
+  "version": "0.1.1",
+  "description": "Claude Code discovery and output adapter for Causign",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./bin": "./dist/bin.js"
+  },
+  "bin": {
+    "causign-claude-code": "./dist/bin.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "@causign/runtime": "workspace:*",
+    "yaml": "2.8.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
 }

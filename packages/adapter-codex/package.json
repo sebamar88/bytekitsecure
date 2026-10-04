@@ -1,6 +1,23 @@
 {
- "name":"@causign/adapter-codex","version":"0.1.1",
-  "description": "Codex agent discovery and runtime integration for Causign","type":"module",
- "exports":{".":{"types":"./dist/index.d.ts","import":"./dist/index.js"}},"files":["dist","README.md"],
- "dependencies":{"@causign/runtime":"workspace:*","@iarna/toml":"2.2.5"},"engines":{"node":">=22"}
+  "name": "@causign/adapter-codex",
+  "version": "0.1.1",
+  "description": "Codex agent discovery and runtime integration for Causign",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "@causign/runtime": "workspace:*",
+    "@iarna/toml": "2.2.5"
+  },
+  "engines": {
+    "node": ">=22"
+  }
 }

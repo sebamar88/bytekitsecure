@@ -99,9 +99,7 @@
           "$ref": "https://causign.dev/schemas/scenario.schema.json#/definitions/JsonValue"
         }
       },
-      "required": [
-        "message"
-      ],
+      "required": ["message"],
       "additionalProperties": false
     },
     "Cost": {
@@ -117,10 +115,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "amount",
-        "currency"
-      ],
+      "required": ["amount", "currency"],
       "additionalProperties": false
     },
     "Usage": {
@@ -181,19 +176,11 @@
               }
             }
           },
-          "required": [
-            "supportedVersions"
-          ],
+          "required": ["supportedVersions"],
           "additionalProperties": false
         }
       },
-      "required": [
-        "protocol",
-        "id",
-        "type",
-        "timestamp",
-        "payload"
-      ],
+      "required": ["protocol", "id", "type", "timestamp", "payload"],
       "additionalProperties": false
     },
     "AdapterReady": {
@@ -229,10 +216,7 @@
                   "minLength": 1
                 }
               },
-              "required": [
-                "name",
-                "version"
-              ],
+              "required": ["name", "version"],
               "additionalProperties": false
             },
             "supportedVersions": {
@@ -250,11 +234,7 @@
               }
             }
           },
-          "required": [
-            "adapter",
-            "supportedVersions",
-            "capabilities"
-          ],
+          "required": ["adapter", "supportedVersions", "capabilities"],
           "additionalProperties": false
         },
         "correlationId": {
@@ -303,19 +283,11 @@
               }
             }
           },
-          "required": [
-            "protocol"
-          ],
+          "required": ["protocol"],
           "additionalProperties": false
         }
       },
-      "required": [
-        "protocol",
-        "id",
-        "type",
-        "timestamp",
-        "payload"
-      ],
+      "required": ["protocol", "id", "type", "timestamp", "payload"],
       "additionalProperties": false
     },
     "AdapterConfigured": {
@@ -397,12 +369,7 @@
               "$ref": "https://causign.dev/schemas/scenario.schema.json#/definitions/ExecutionLimits"
             }
           },
-          "required": [
-            "input",
-            "interceptions",
-            "approvalDecisions",
-            "limits"
-          ],
+          "required": ["input", "interceptions", "approvalDecisions", "limits"],
           "additionalProperties": false
         },
         "runId": {
@@ -410,14 +377,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "protocol",
-        "id",
-        "type",
-        "timestamp",
-        "payload",
-        "runId"
-      ],
+      "required": ["protocol", "id", "type", "timestamp", "payload", "runId"],
       "additionalProperties": false
     },
     "RunStarted": {
@@ -490,9 +450,7 @@
               "minLength": 1
             }
           },
-          "required": [
-            "reason"
-          ],
+          "required": ["reason"],
           "additionalProperties": false
         },
         "runId": {
@@ -500,14 +458,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "protocol",
-        "id",
-        "type",
-        "timestamp",
-        "payload",
-        "runId"
-      ],
+      "required": ["protocol", "id", "type", "timestamp", "payload", "runId"],
       "additionalProperties": false
     },
     "RunCancelled": {
@@ -536,9 +487,7 @@
               "minLength": 1
             }
           },
-          "required": [
-            "reason"
-          ],
+          "required": ["reason"],
           "additionalProperties": false
         },
         "runId": {
@@ -550,14 +499,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "protocol",
-        "id",
-        "type",
-        "timestamp",
-        "payload",
-        "runId"
-      ],
+      "required": ["protocol", "id", "type", "timestamp", "payload", "runId"],
       "additionalProperties": false
     },
     "RunCompleted": {
@@ -602,14 +544,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "protocol",
-        "id",
-        "type",
-        "timestamp",
-        "payload",
-        "runId"
-      ],
+      "required": ["protocol", "id", "type", "timestamp", "payload", "runId"],
       "additionalProperties": false
     },
     "RunFailed": {
@@ -646,9 +581,7 @@
               }
             }
           },
-          "required": [
-            "error"
-          ],
+          "required": ["error"],
           "additionalProperties": false
         },
         "runId": {
@@ -656,14 +589,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "protocol",
-        "id",
-        "type",
-        "timestamp",
-        "payload",
-        "runId"
-      ],
+      "required": ["protocol", "id", "type", "timestamp", "payload", "runId"],
       "additionalProperties": false
     },
     "RunErrored": {
@@ -691,9 +617,7 @@
               "$ref": "#/definitions/ProtocolError"
             }
           },
-          "required": [
-            "error"
-          ],
+          "required": ["error"],
           "additionalProperties": false
         },
         "runId": {
@@ -701,14 +625,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "protocol",
-        "id",
-        "type",
-        "timestamp",
-        "payload",
-        "runId"
-      ],
+      "required": ["protocol", "id", "type", "timestamp", "payload", "runId"],
       "additionalProperties": false
     },
     "ToolRequested": {
@@ -749,11 +666,7 @@
               }
             }
           },
-          "required": [
-            "name",
-            "input",
-            "intercepted"
-          ],
+          "required": ["name", "input", "intercepted"],
           "additionalProperties": false
         },
         "runId": {
@@ -850,9 +763,7 @@
               "$ref": "https://causign.dev/schemas/scenario.schema.json#/definitions/StaticResponse"
             }
           },
-          "required": [
-            "response"
-          ],
+          "required": ["response"],
           "additionalProperties": false
         },
         "runId": {
@@ -902,13 +813,7 @@
           "type": "object",
           "properties": {
             "source": {
-              "enum": [
-                "causign",
-                "adapter",
-                "agent",
-                "policy",
-                "external"
-              ],
+              "enum": ["causign", "adapter", "agent", "policy", "external"],
               "type": "string"
             },
             "reason": {
@@ -916,10 +821,7 @@
               "minLength": 1
             }
           },
-          "required": [
-            "source",
-            "reason"
-          ],
+          "required": ["source", "reason"],
           "additionalProperties": false
         },
         "runId": {
@@ -973,9 +875,7 @@
               "minLength": 1
             }
           },
-          "required": [
-            "name"
-          ],
+          "required": ["name"],
           "additionalProperties": false
         },
         "runId": {
@@ -1027,10 +927,7 @@
               "$ref": "https://causign.dev/schemas/scenario.schema.json#/definitions/JsonValue"
             },
             "execution": {
-              "enum": [
-                "real",
-                "mock"
-              ],
+              "enum": ["real", "mock"],
               "type": "string"
             },
             "metadata": {
@@ -1040,11 +937,7 @@
               }
             }
           },
-          "required": [
-            "name",
-            "output",
-            "execution"
-          ],
+          "required": ["name", "output", "execution"],
           "additionalProperties": false
         },
         "runId": {
@@ -1096,18 +989,11 @@
               "$ref": "#/definitions/ProtocolError"
             },
             "execution": {
-              "enum": [
-                "real",
-                "mock"
-              ],
+              "enum": ["real", "mock"],
               "type": "string"
             }
           },
-          "required": [
-            "name",
-            "error",
-            "execution"
-          ],
+          "required": ["name", "error", "execution"],
           "additionalProperties": false
         },
         "runId": {
@@ -1156,13 +1042,7 @@
               "minLength": 1
             },
             "source": {
-              "enum": [
-                "causign",
-                "adapter",
-                "agent",
-                "policy",
-                "external"
-              ],
+              "enum": ["causign", "adapter", "agent", "policy", "external"],
               "type": "string"
             },
             "reason": {
@@ -1170,11 +1050,7 @@
               "minLength": 1
             }
           },
-          "required": [
-            "name",
-            "source",
-            "reason"
-          ],
+          "required": ["name", "source", "reason"],
           "additionalProperties": false
         },
         "runId": {
@@ -1228,9 +1104,7 @@
               }
             }
           },
-          "required": [
-            "input"
-          ],
+          "required": ["input"],
           "additionalProperties": false
         },
         "runId": {
@@ -1275,16 +1149,11 @@
           "type": "object",
           "properties": {
             "decision": {
-              "enum": [
-                "grant",
-                "reject"
-              ],
+              "enum": ["grant", "reject"],
               "type": "string"
             }
           },
-          "required": [
-            "decision"
-          ],
+          "required": ["decision"],
           "additionalProperties": false
         },
         "runId": {
@@ -1334,16 +1203,11 @@
           "type": "object",
           "properties": {
             "decision": {
-              "enum": [
-                "grant",
-                "reject"
-              ],
+              "enum": ["grant", "reject"],
               "type": "string"
             }
           },
-          "required": [
-            "decision"
-          ],
+          "required": ["decision"],
           "additionalProperties": false
         },
         "runId": {
@@ -1405,9 +1269,7 @@
               }
             }
           },
-          "required": [
-            "model"
-          ],
+          "required": ["model"],
           "additionalProperties": false
         },
         "runId": {
@@ -1464,9 +1326,7 @@
               }
             }
           },
-          "required": [
-            "output"
-          ],
+          "required": ["output"],
           "additionalProperties": false
         },
         "runId": {
@@ -1514,9 +1374,7 @@
               "$ref": "#/definitions/ProtocolError"
             }
           },
-          "required": [
-            "error"
-          ],
+          "required": ["error"],
           "additionalProperties": false
         },
         "runId": {
@@ -1561,12 +1419,7 @@
           "type": "object",
           "properties": {
             "role": {
-              "enum": [
-                "system",
-                "user",
-                "assistant",
-                "tool"
-              ],
+              "enum": ["system", "user", "assistant", "tool"],
               "type": "string"
             },
             "content": {
@@ -1579,10 +1432,7 @@
               }
             }
           },
-          "required": [
-            "role",
-            "content"
-          ],
+          "required": ["role", "content"],
           "additionalProperties": false
         },
         "runId": {
@@ -1590,14 +1440,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "protocol",
-        "id",
-        "type",
-        "timestamp",
-        "payload",
-        "runId"
-      ],
+      "required": ["protocol", "id", "type", "timestamp", "payload", "runId"],
       "additionalProperties": false
     }
   }

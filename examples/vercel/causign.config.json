@@ -1,1 +1,7 @@
-{"schemaVersion":"1","agents":{"vercel":{"command":"node","args":["examples/vercel/agent.mjs"]}},"evaluators":{}}
+{
+  "schemaVersion": "1",
+  "agents": {
+    "vercel": { "command": "node", "args": ["examples/vercel/agent.mjs"] }
+  },
+  "evaluators": {}
+}

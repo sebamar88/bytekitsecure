@@ -35,10 +35,7 @@
       "$ref": "#/definitions/TraceTerminal"
     },
     "completeness": {
-      "enum": [
-        "complete",
-        "incomplete"
-      ],
+      "enum": ["complete", "incomplete"],
       "type": "string"
     },
     "metadata": {
@@ -96,10 +93,7 @@
           }
         }
       },
-      "required": [
-        "kind",
-        "message"
-      ],
+      "required": ["kind", "message"],
       "additionalProperties": false
     },
     "TraceEvent": {
@@ -114,17 +108,11 @@
           "$ref": "https://causign.dev/schemas/protocol.schema.json"
         },
         "source": {
-          "enum": [
-            "adapter",
-            "runner"
-          ],
+          "enum": ["adapter", "runner"],
           "type": "string"
         }
       },
-      "required": [
-        "receiveSequence",
-        "message"
-      ],
+      "required": ["receiveSequence", "message"],
       "additionalProperties": false
     },
     "TraceTerminal": {
@@ -141,10 +129,7 @@
           "type": "string"
         },
         "source": {
-          "enum": [
-            "adapter",
-            "runner"
-          ],
+          "enum": ["adapter", "runner"],
           "type": "string"
         },
         "messageId": {
@@ -152,11 +137,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "type",
-        "source",
-        "messageId"
-      ],
+      "required": ["type", "source", "messageId"],
       "additionalProperties": false
     }
   }

@@ -1,0 +1,8 @@
+node_modules/
+**/dist/
+coverage/
+.superpowers/
+.causign/
+.agentest/
+pnpm-lock.yaml
+packages/protocol/src/generated.ts

@@ -20,13 +20,7 @@
       "minLength": 1
     },
     "status": {
-      "enum": [
-        "PASS",
-        "FAIL",
-        "ERROR",
-        "INCOMPATIBLE",
-        "SKIP"
-      ],
+      "enum": ["PASS", "FAIL", "ERROR", "INCOMPATIBLE", "SKIP"],
       "type": "string"
     },
     "assertions": {
@@ -90,10 +84,7 @@
               "minLength": 1
             }
           },
-          "required": [
-            "kind",
-            "messageId"
-          ],
+          "required": ["kind", "messageId"],
           "additionalProperties": false
         },
         {
@@ -103,10 +94,7 @@
               "const": "metric"
             },
             "metric": {
-              "enum": [
-                "executionLatencyMs",
-                "cost"
-              ],
+              "enum": ["executionLatencyMs", "cost"],
               "type": "string"
             },
             "value": {
@@ -118,11 +106,7 @@
               "minLength": 1
             }
           },
-          "required": [
-            "kind",
-            "metric",
-            "value"
-          ],
+          "required": ["kind", "metric", "value"],
           "additionalProperties": false
         },
         {
@@ -151,11 +135,7 @@
               "type": "number"
             }
           },
-          "required": [
-            "kind",
-            "evaluatorId",
-            "configHash"
-          ],
+          "required": ["kind", "evaluatorId", "configHash"],
           "additionalProperties": false
         }
       ]
@@ -169,12 +149,7 @@
           "minLength": 1
         },
         "status": {
-          "enum": [
-            "PASS",
-            "FAIL",
-            "ERROR",
-            "NOT_EVALUATED"
-          ],
+          "enum": ["PASS", "FAIL", "ERROR", "NOT_EVALUATED"],
           "type": "string"
         },
         "expected": {

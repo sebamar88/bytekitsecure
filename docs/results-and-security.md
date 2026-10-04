@@ -6,11 +6,11 @@
 plus bounded diagnostics. Each suite receives a unique results directory beneath
 `.causign/results` by default.
 
-| Artifact | Contents |
-| --- | --- |
-| `results.json` | Version, results, diagnostics, exit code and artifact manifest |
-| Plan files | `{ schemaVersion: '1', plan: RunPlan }` |
-| Trace files | Protocol facts, coverage, receive order, completeness and terminal provenance |
+| Artifact       | Contents                                                                      |
+| -------------- | ----------------------------------------------------------------------------- |
+| `results.json` | Version, results, diagnostics, exit code and artifact manifest                |
+| Plan files     | `{ schemaVersion: '1', plan: RunPlan }`                                       |
+| Trace files    | Protocol facts, coverage, receive order, completeness and terminal provenance |
 
 Use manifest paths rather than deriving filenames from scenario IDs. Plans are
 decisions; traces are facts; assertions are claims with message/operation, metric
@@ -44,12 +44,12 @@ flowchart TD
 
 ## Negative security claims
 
-| Evidence | `not.toHaveBeenExecuted()` |
-| --- | --- |
-| Matching real `tool.started` | FAIL, even in an incomplete trace |
-| Absent, complete trace and required observation | PASS |
-| Absent, incomplete trace | NOT_EVALUATED; no proof of absence |
-| Missing required capability before execution | Scenario INCOMPATIBLE |
+| Evidence                                        | `not.toHaveBeenExecuted()`         |
+| ----------------------------------------------- | ---------------------------------- |
+| Matching real `tool.started`                    | FAIL, even in an incomplete trace  |
+| Absent, complete trace and required observation | PASS                               |
+| Absent, incomplete trace                        | NOT_EVALUATED; no proof of absence |
+| Missing required capability before execution    | Scenario INCOMPATIBLE              |
 
 Mock success does not prove real execution; real failure proves execution began.
 Inspect rejection provenance rather than treating every rejection as a runner
@@ -66,17 +66,17 @@ is outside this MVP. Live model behavior remains nondeterministic.
 
 ## Troubleshooting
 
-| Symptom | Inspect |
-| --- | --- |
-| INCOMPATIBLE | Missing capabilities; truthful adapter support or supported assertions |
-| Invalid JSONL | stdout logs, malformed frames, versions and frame limits |
-| Handshake timeout | Command, args, cwd and stderr |
-| Interception timeout | Pending operation/decision; never bypass authorization |
-| Approval unresolved | Explicit decisions and adapter approval support |
-| Evaluator ERROR | Factory export, module path and verdict shape |
-| Artifact write failure | Permissions/path; results stay ERROR |
-| Python missing | Executable or absolute `CAUSIGN_PYTHON` |
-| Generated types stale | `pnpm generate`; inspect real contract drift (LF/CRLF accepted) |
+| Symptom                | Inspect                                                                |
+| ---------------------- | ---------------------------------------------------------------------- |
+| INCOMPATIBLE           | Missing capabilities; truthful adapter support or supported assertions |
+| Invalid JSONL          | stdout logs, malformed frames, versions and frame limits               |
+| Handshake timeout      | Command, args, cwd and stderr                                          |
+| Interception timeout   | Pending operation/decision; never bypass authorization                 |
+| Approval unresolved    | Explicit decisions and adapter approval support                        |
+| Evaluator ERROR        | Factory export, module path and verdict shape                          |
+| Artifact write failure | Permissions/path; results stay ERROR                                   |
+| Python missing         | Executable or absolute `CAUSIGN_PYTHON`                                |
+| Generated types stale  | `pnpm generate`; inspect real contract drift (LF/CRLF accepted)        |
 
 Transport defaults: 10s handshake, 30s scenario, 5s interception, 1 MiB frame,
 64 KiB retained stderr, 32 MiB trace and 100,000 messages. Core `RunOptions.limits`

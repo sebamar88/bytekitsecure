@@ -104,9 +104,13 @@ The starter agent returns a greeting without a provider.
 
 ```ts
 export default {
-  schemaVersion: '1',
+  schemaVersion: "1",
   agents: {
-    support: { command: process.execPath, args: ['support-agent.mjs'], cwd: '.' },
+    support: {
+      command: process.execPath,
+      args: ["support-agent.mjs"],
+      cwd: ".",
+    },
   },
   evaluators: {},
 };
@@ -118,11 +122,11 @@ omitted cwd. `env` supplies extra process environment values; do not commit secr
 
 ## Commands and discovery
 
-| Command | Purpose |
-| --- | --- |
-| `causign init` | Generate starter files in the current directory |
+| Command           | Purpose                                                |
+| ----------------- | ------------------------------------------------------ |
+| `causign init`    | Generate starter files in the current directory        |
 | `causign inspect` | Validate/normalize definitions without starting agents |
-| `causign run` | Negotiate, execute and evaluate |
+| `causign run`     | Negotiate, execute and evaluate                        |
 
 `inspect` and `run` accept positional file/glob filters and `--config path`.
 Run also accepts `--output-dir path` and `--verbose`.
@@ -147,11 +151,11 @@ Copy the archives to your consumer root and merge these settings into its
 
 ```yaml
 overrides:
-  '@causign/protocol': file:./causign-protocol-0.1.0.tgz
-  '@causign/core': file:./causign-core-0.1.0.tgz
-  '@causign/sdk': file:./causign-sdk-0.1.0.tgz
-  '@causign/cli': file:./causign-cli-0.1.0.tgz
-  '@causign/adapter-vercel': file:./causign-adapter-vercel-0.1.0.tgz
+  "@causign/protocol": file:./causign-protocol-0.1.0.tgz
+  "@causign/core": file:./causign-core-0.1.0.tgz
+  "@causign/sdk": file:./causign-sdk-0.1.0.tgz
+  "@causign/cli": file:./causign-cli-0.1.0.tgz
+  "@causign/adapter-vercel": file:./causign-adapter-vercel-0.1.0.tgz
 ```
 
 ```sh

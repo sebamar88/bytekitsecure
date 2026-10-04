@@ -189,15 +189,15 @@ plugins without adding rows here or changing core. Non-process API/editor hosts
 can use a protocol-speaking bridge launched through the existing AgentReference;
 the first delivery does not implement those bridges.
 
-| Runtime | First delivery | Subsequent validation surface |
-| --- | --- | --- |
-| Claude Code | Discovery + output adapter | Hooks/Agent SDK control semantics |
-| Codex CLI | Versioned discovery + output adapter | app-server requests and approvals |
-| Gemini CLI | Extension example | Headless stream + control integration |
-| GitHub Copilot CLI | Extension example | Supported programmatic/event interfaces |
-| GitHub Copilot VS Code agent | Extension example | Documented extension/host integration and event/control access |
-| OpenCode | Extension example | CLI/server events, agent and provider selection |
-| Pi (pi-coding-agent) | Extension example | Verify versioned RPC/events |
+| Runtime                      | First delivery                       | Subsequent validation surface                                  |
+| ---------------------------- | ------------------------------------ | -------------------------------------------------------------- |
+| Claude Code                  | Discovery + output adapter           | Hooks/Agent SDK control semantics                              |
+| Codex CLI                    | Versioned discovery + output adapter | app-server requests and approvals                              |
+| Gemini CLI                   | Extension example                    | Headless stream + control integration                          |
+| GitHub Copilot CLI           | Extension example                    | Supported programmatic/event interfaces                        |
+| GitHub Copilot VS Code agent | Extension example                    | Documented extension/host integration and event/control access |
+| OpenCode                     | Extension example                    | CLI/server events, agent and provider selection                |
+| Pi (pi-coding-agent)         | Extension example                    | Verify versioned RPC/events                                    |
 
 Copilot CLI and VS Code use distinct runtime IDs (`copilot-cli`,
 `copilot-vscode`) under the same family. VS Code is an editor-host target, not a

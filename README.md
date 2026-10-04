@@ -21,14 +21,14 @@ You get a test result your CI can act on and a trace you can use to explain it.
 
 ## Why use it?
 
-| When this happens… | Causign helps you… | What you gain |
-| --- | --- | --- |
-| A prompt, model or tool change alters behavior | Rerun the same scenarios and assertions | A regression check before shipping |
-| A test would execute a payment, deployment or external lookup | Replace selected instrumented tools with static results/errors | Test the surrounding agent flow without invoking those real implementations |
-| The answer looks correct, but the agent attempted a forbidden operation | Assert tool requests, real execution, rejections and approvals separately | Visibility into actions that final-text checks miss |
-| A failing run leaves you guessing what happened | Retain assertion reasons and references to trace events | Evidence you can inspect instead of reconstructing a run from scattered logs |
-| Teams use different languages or frameworks | Connect them through the same JSONL contract | A shared runner, result model and CI workflow |
-| Your CI only knows whether the process exited | Return distinct behavior, infrastructure and compatibility outcomes | Failures that point to the kind of problem you need to fix |
+| When this happens…                                                      | Causign helps you…                                                        | What you gain                                                                |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| A prompt, model or tool change alters behavior                          | Rerun the same scenarios and assertions                                   | A regression check before shipping                                           |
+| A test would execute a payment, deployment or external lookup           | Replace selected instrumented tools with static results/errors            | Test the surrounding agent flow without invoking those real implementations  |
+| The answer looks correct, but the agent attempted a forbidden operation | Assert tool requests, real execution, rejections and approvals separately | Visibility into actions that final-text checks miss                          |
+| A failing run leaves you guessing what happened                         | Retain assertion reasons and references to trace events                   | Evidence you can inspect instead of reconstructing a run from scattered logs |
+| Teams use different languages or frameworks                             | Connect them through the same JSONL contract                              | A shared runner, result model and CI workflow                                |
+| Your CI only knows whether the process exited                           | Return distinct behavior, infrastructure and compatibility outcomes       | Failures that point to the kind of problem you need to fix                   |
 
 You provide your scenarios and an instrumented adapter. Causign provides process
 management, capability checks, static tool interception, assertions, evidence
@@ -47,12 +47,12 @@ published CLI 0.1.0.
 These approaches solve different parts of the problem; Causign can sit alongside
 your unit tests and output evaluations.
 
-| Approach | Useful for | What Causign adds |
-| --- | --- | --- |
-| Unit tests for individual tools/functions | Checking isolated implementation logic | Scenarios around the instrumented agent's actual tool-selection and approval flow |
-| Assertions on the final answer | Checking expected content and quality | Evidence of intent, execution, mocks and rejections, even when the answer looks fine |
-| Ad hoc scripts and manual logs | Exploring or debugging a particular run | A reusable scenario format, lifecycle validation, standardized artifacts and CI status semantics |
-| A custom framework-specific harness | Deep integration with one application stack | A common protocol and runner across adapters; framework-specific instrumentation is still required |
+| Approach                                  | Useful for                                  | What Causign adds                                                                                  |
+| ----------------------------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Unit tests for individual tools/functions | Checking isolated implementation logic      | Scenarios around the instrumented agent's actual tool-selection and approval flow                  |
+| Assertions on the final answer            | Checking expected content and quality       | Evidence of intent, execution, mocks and rejections, even when the answer looks fine               |
+| Ad hoc scripts and manual logs            | Exploring or debugging a particular run     | A reusable scenario format, lifecycle validation, standardized artifacts and CI status semantics   |
+| A custom framework-specific harness       | Deep integration with one application stack | A common protocol and runner across adapters; framework-specific instrumentation is still required |
 
 **Use Causign when** you need to verify observable agent behavior across runs,
 especially tool calls, approvals and regressions in CI. For a pure function with
@@ -72,10 +72,10 @@ This feature is not yet included in npm `0.1.0`.
 
 ![Causign local failure report](docs/images/local-report.png)
 
-| 🧪 Tests | 📊 Evals | 🛡️ Security |
-| --- | --- | --- |
-| Scenarios, fixtures and static mocks | Output checks and semantic evaluators | Tool intent, execution, rejection and approval evidence |
-| Deterministic local examples | Regression scenarios, latency and explicit USD cost | Interception that fails closed |
+| 🧪 Tests                             | 📊 Evals                                            | 🛡️ Security                                             |
+| ------------------------------------ | --------------------------------------------------- | ------------------------------------------------------- |
+| Scenarios, fixtures and static mocks | Output checks and semantic evaluators               | Tool intent, execution, rejection and approval evidence |
+| Deterministic local examples         | Regression scenarios, latency and explicit USD cost | Interception that fails closed                          |
 
 **MVP scope:** a CLI, declarative SDK, language-neutral protocol and Vercel AI SDK adapter. Model-diff dashboards, model interception and security sandboxing are outside this release. The five packages are published on npm at version `0.1.0`.
 
@@ -110,9 +110,9 @@ npx --yes @causign/cli@0.1.0 run
 ```
 
 | Executor | Equivalent command (replace `init` with `inspect` or `run`) |
-| --- | --- |
-| pnpm dlx | `pnpm dlx @causign/cli@0.1.0 init` |
-| pnpx | `pnpx @causign/cli@0.1.0 init` |
+| -------- | ----------------------------------------------------------- |
+| pnpm dlx | `pnpm dlx @causign/cli@0.1.0 init`                          |
+| pnpx     | `pnpx @causign/cli@0.1.0 init`                              |
 
 These executors download/cache the CLI without adding it to project dependencies.
 The starter requires no local SDK. Scenarios that import `@causign/sdk` need that
@@ -155,17 +155,17 @@ repository cross-language tests use it.
 ## Tests that describe intent
 
 ```ts
-import { agentTest, expect } from '@causign/sdk';
+import { agentTest, expect } from "@causign/sdk";
 
-export default agentTest('refund requires approval', {
-  agent: 'support',
-  input: { customerId: 'fake' },
-  mocks: { 'customer.lookup': { result: { name: 'Ada' } } },
-  approvalDecisions: [{ decision: 'reject' }],
+export default agentTest("refund requires approval", {
+  agent: "support",
+  input: { customerId: "fake" },
+  mocks: { "customer.lookup": { result: { name: "Ada" } } },
+  approvalDecisions: [{ decision: "reject" }],
   assertions: [
-    expect.tool('customer.lookup').toHaveBeenMocked(),
+    expect.tool("customer.lookup").toHaveBeenMocked(),
     expect.approval().toHaveBeenRejected(),
-    expect.tool('refund').not.toHaveBeenExecuted(),
+    expect.tool("refund").not.toHaveBeenExecuted(),
   ],
 });
 ```
@@ -191,39 +191,39 @@ A request records intent; `tool.started` records real execution. A mock never pr
 
 ## Built for CI
 
-| Result | Exit | Meaning |
-| --- | ---: | --- |
-| PASS / SKIP | 0 | Passed assertions or explicit skip |
-| FAIL | 1 | Unexpected behavior |
-| ERROR | 2 | Infrastructure, protocol or evaluator problem |
-| INCOMPATIBLE | 3 | Required capability or protocol unavailable |
-| Interrupted | 130 | Explicit user interruption |
+| Result       | Exit | Meaning                                       |
+| ------------ | ---: | --------------------------------------------- |
+| PASS / SKIP  |    0 | Passed assertions or explicit skip            |
+| FAIL         |    1 | Unexpected behavior                           |
+| ERROR        |    2 | Infrastructure, protocol or evaluator problem |
+| INCOMPATIBLE |    3 | Required capability or protocol unavailable   |
+| Interrupted  |  130 | Explicit user interruption                    |
 
 The [acceptance workflow](.github/workflows/ci.yml) runs the same checks on **Linux x64 · Windows x64 · macOS ARM64 · Linux ARM64**, including coverage and seven installed-CLI scenarios. The badge shows the current remote status. Reports retain evidence under `.causign/results` by default.
 
 ## Explore the examples
 
-| Fixture | Focus |
-| --- | --- |
-| [Support](examples/support) | Customer lookup mock and rejected refund approval |
-| [Coding](examples/coding) | Instrumented coding-tool behavior |
-| [DevOps](examples/devops) | Operational tool and approval assertions |
-| [RAG](examples/rag) | Citation evaluator |
-| [Coordinator](examples/coordinator) | Instrumented coordinator scenario |
-| [Python](fixtures/python-agent.py) | Standard-library JSONL interoperability |
-| [Vercel](examples/vercel) | Real AI SDK with a deterministic mock model |
+| Fixture                             | Focus                                             |
+| ----------------------------------- | ------------------------------------------------- |
+| [Support](examples/support)         | Customer lookup mock and rejected refund approval |
+| [Coding](examples/coding)           | Instrumented coding-tool behavior                 |
+| [DevOps](examples/devops)           | Operational tool and approval assertions          |
+| [RAG](examples/rag)                 | Citation evaluator                                |
+| [Coordinator](examples/coordinator) | Instrumented coordinator scenario                 |
+| [Python](fixtures/python-agent.py)  | Standard-library JSONL interoperability           |
+| [Vercel](examples/vercel)           | Real AI SDK with a deterministic mock model       |
 
 These fixtures use fake/local tools. Their `.mjs` exports need `*.causign.ts` wrappers for CLI discovery; see [the examples guide](examples/README.md).
 
 ## Packages and assistant skill
 
-| Package | Responsibility |
-| --- | --- |
-| `@causign/protocol` | Schemas, types and lifecycle validation |
-| `@causign/core` | Negotiation, processes, assertions and evidence |
-| `@causign/sdk` | Declarative scenarios and JS/TS bridge |
-| `@causign/cli` | `init`, `inspect`, `run` and reports |
-| `@causign/adapter-vercel` | Adapter for exactly `ai@7.0.127` |
+| Package                   | Responsibility                                  |
+| ------------------------- | ----------------------------------------------- |
+| `@causign/protocol`       | Schemas, types and lifecycle validation         |
+| `@causign/core`           | Negotiation, processes, assertions and evidence |
+| `@causign/sdk`            | Declarative scenarios and JS/TS bridge          |
+| `@causign/cli`            | `init`, `inspect`, `run` and reports            |
+| `@causign/adapter-vercel` | Adapter for exactly `ai@7.0.127`                |
 
 The [Causign skill](skills/causign/SKILL.md) guides coding assistants through setup and evidence interpretation. Install `skills/causign` with your runtime's skill installer, then invoke `$causign`. The CLI executes tests; the skill guides its use.
 

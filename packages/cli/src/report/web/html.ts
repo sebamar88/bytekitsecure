@@ -1,4 +1,4 @@
-export const html=`<!doctype html>
+export const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark"><title>Causign · Local reports</title><link rel="stylesheet" href="/style.css"></head>
 <body><a class="skip-link" href="#scenario-detail">Skip to report details</a>
 <aside class="sidebar"><div class="brand"><span class="brand-mark" aria-hidden="true">C</span>Causign<span class="brand-tag">REPORTS</span></div>

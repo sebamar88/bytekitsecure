@@ -26,11 +26,7 @@
       }
     }
   },
-  "required": [
-    "schemaVersion",
-    "agents",
-    "evaluators"
-  ],
+  "required": ["schemaVersion", "agents", "evaluators"],
   "additionalProperties": false,
   "definitions": {
     "AgentReference": {
@@ -64,10 +60,7 @@
           }
         }
       },
-      "required": [
-        "command",
-        "args"
-      ],
+      "required": ["command", "args"],
       "additionalProperties": false
     },
     "EvaluatorConfiguration": {
@@ -96,9 +89,7 @@
           }
         }
       },
-      "required": [
-        "module"
-      ],
+      "required": ["module"],
       "additionalProperties": false
     }
   }

@@ -28,11 +28,11 @@ A UNC source is never passed as a Linux working directory.
 
 ## Built-in recognition
 
-| Discoverer | Recognizes | Execution |
-| --- | --- | --- |
-| `causign/markdown-instructions` | Markdown instruction files | Unresolved; context is not an executable agent |
-| `causign/claude-agents` | Claude-compatible YAML frontmatter with native name/description and Markdown body | Claude output profile, reference version 2.1.284 |
-| `causign/codex-config` | Explicit `<name>.config.toml` profile files matching the observed 0.159.0 profile format | Blocked until global tool denial is verified |
+| Discoverer                      | Recognizes                                                                               | Execution                                        |
+| ------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| `causign/markdown-instructions` | Markdown instruction files                                                               | Unresolved; context is not an executable agent   |
+| `causign/claude-agents`         | Claude-compatible YAML frontmatter with native name/description and Markdown body        | Claude output profile, reference version 2.1.284 |
+| `causign/codex-config`          | Explicit `<name>.config.toml` profile files matching the observed 0.159.0 profile format | Blocked until global tool denial is verified     |
 
 Without a filter, all registered file discoverers inspect the chosen source.
 The same Markdown may appear as an instruction candidate and a Claude-format
@@ -65,20 +65,32 @@ Plugin API `1` is distinct from wire protocol `causign/1`. A plugin provides:
 
 ```js
 export default {
-  id: 'my-team/framework', apiVersion: '1',
-  discoverers: [{
-    id: 'my-team/definitions', sourceKinds: ['file'],
-    async discover(source, context) {
-      // context.files supplies bounded {path,text,revision} entries.
-      // Return {candidates,diagnostics,complete}; definitions remain data.
-    }
-  }],
-  adapters: [{
-    id: 'my-team/output',
-    supports(candidate) { /* Side-effect-free format match. */ },
-    async probe(target, selection) { /* Availability, version, capabilities. */ },
-    async createLaunch(selection) { /* Existing {command,args,cwd,metadata} contract. */ }
-  }]
+  id: "my-team/framework",
+  apiVersion: "1",
+  discoverers: [
+    {
+      id: "my-team/definitions",
+      sourceKinds: ["file"],
+      async discover(source, context) {
+        // context.files supplies bounded {path,text,revision} entries.
+        // Return {candidates,diagnostics,complete}; definitions remain data.
+      },
+    },
+  ],
+  adapters: [
+    {
+      id: "my-team/output",
+      supports(candidate) {
+        /* Side-effect-free format match. */
+      },
+      async probe(target, selection) {
+        /* Availability, version, capabilities. */
+      },
+      async createLaunch(selection) {
+        /* Existing {command,args,cwd,metadata} contract. */
+      },
+    },
+  ],
 };
 ```
 
@@ -98,22 +110,34 @@ The first delivery offers programmatic launch preparation; discovery does not
 write your test config or run a model. With the development packages installed:
 
 ```js
-import {writeFile} from 'node:fs/promises';
-import {createRegistry, discoverAgents} from '@causign/runtime';
-import claude from '@causign/adapter-claude-code';
+import { writeFile } from "node:fs/promises";
+import { createRegistry, discoverAgents } from "@causign/runtime";
+import claude from "@causign/adapter-claude-code";
 
 const registry = createRegistry([claude]);
-const report = await discoverAgents(registry, {kind:'file', path:'/absolute/agents'});
-if (!report.complete) throw new Error('Resolve discovery diagnostics first');
-const candidate = report.candidates.find(item => item.id === process.argv[2]);
-if (!candidate) throw new Error('Choose an explicit candidate ID');
-const adapter = registry.adapters.find(item => item.id === 'causign/claude-output');
-const selection = {candidate, adapterId:adapter.id, mode:'output',
-  target:{kind:'native', command:'claude', cwd:process.cwd()}};
+const report = await discoverAgents(registry, {
+  kind: "file",
+  path: "/absolute/agents",
+});
+if (!report.complete) throw new Error("Resolve discovery diagnostics first");
+const candidate = report.candidates.find((item) => item.id === process.argv[2]);
+if (!candidate) throw new Error("Choose an explicit candidate ID");
+const adapter = registry.adapters.find(
+  (item) => item.id === "causign/claude-output",
+);
+const selection = {
+  candidate,
+  adapterId: adapter.id,
+  mode: "output",
+  target: { kind: "native", command: "claude", cwd: process.cwd() },
+};
 const probe = await adapter.probe(selection.target, selection);
-if (!probe.capabilities.includes('observe.output')) throw new Error(JSON.stringify(probe.diagnostics));
+if (!probe.capabilities.includes("observe.output"))
+  throw new Error(JSON.stringify(probe.diagnostics));
 const launch = await adapter.createLaunch(selection);
-await writeFile('selected-agent.json', JSON.stringify(launch, null, 2), {flag:'wx'});
+await writeFile("selected-agent.json", JSON.stringify(launch, null, 2), {
+  flag: "wx",
+});
 ```
 
 Review the generated command/args/metadata. Copy that AgentReference into your

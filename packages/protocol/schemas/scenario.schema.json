@@ -117,10 +117,7 @@
               "$ref": "https://causign.dev/schemas/scenario.schema.json#/definitions/JsonValue"
             }
           },
-          "required": [
-            "kind",
-            "value"
-          ],
+          "required": ["kind", "value"],
           "additionalProperties": false
         },
         {
@@ -133,10 +130,7 @@
               "$ref": "https://causign.dev/schemas/scenario.schema.json#/definitions/JsonValue"
             }
           },
-          "required": [
-            "kind",
-            "value"
-          ],
+          "required": ["kind", "value"],
           "additionalProperties": false
         }
       ]
@@ -156,11 +150,7 @@
           "$ref": "#/definitions/StaticResponse"
         }
       },
-      "required": [
-        "type",
-        "name",
-        "response"
-      ],
+      "required": ["type", "name", "response"],
       "additionalProperties": false
     },
     "AssertionDefinition": {
@@ -184,9 +174,7 @@
                   "minLength": 1
                 }
               },
-              "required": [
-                "name"
-              ],
+              "required": ["name"],
               "additionalProperties": false
             },
             "negated": {
@@ -200,13 +188,7 @@
               }
             }
           },
-          "required": [
-            "id",
-            "type",
-            "parameters",
-            "negated",
-            "requirements"
-          ],
+          "required": ["id", "type", "parameters", "negated", "requirements"],
           "additionalProperties": false
         },
         {
@@ -227,9 +209,7 @@
                   "minLength": 1
                 }
               },
-              "required": [
-                "name"
-              ],
+              "required": ["name"],
               "additionalProperties": false
             },
             "negated": {
@@ -243,13 +223,7 @@
               }
             }
           },
-          "required": [
-            "id",
-            "type",
-            "parameters",
-            "negated",
-            "requirements"
-          ],
+          "required": ["id", "type", "parameters", "negated", "requirements"],
           "additionalProperties": false
         },
         {
@@ -270,9 +244,7 @@
                   "minLength": 1
                 }
               },
-              "required": [
-                "name"
-              ],
+              "required": ["name"],
               "additionalProperties": false
             },
             "negated": {
@@ -286,13 +258,7 @@
               }
             }
           },
-          "required": [
-            "id",
-            "type",
-            "parameters",
-            "negated",
-            "requirements"
-          ],
+          "required": ["id", "type", "parameters", "negated", "requirements"],
           "additionalProperties": false
         },
         {
@@ -313,9 +279,7 @@
                   "minLength": 1
                 }
               },
-              "required": [
-                "name"
-              ],
+              "required": ["name"],
               "additionalProperties": false
             },
             "negated": {
@@ -329,13 +293,7 @@
               }
             }
           },
-          "required": [
-            "id",
-            "type",
-            "parameters",
-            "negated",
-            "requirements"
-          ],
+          "required": ["id", "type", "parameters", "negated", "requirements"],
           "additionalProperties": false
         },
         {
@@ -356,9 +314,7 @@
                   "minLength": 1
                 }
               },
-              "required": [
-                "name"
-              ],
+              "required": ["name"],
               "additionalProperties": false
             },
             "negated": {
@@ -372,13 +328,7 @@
               }
             }
           },
-          "required": [
-            "id",
-            "type",
-            "parameters",
-            "negated",
-            "requirements"
-          ],
+          "required": ["id", "type", "parameters", "negated", "requirements"],
           "additionalProperties": false
         },
         {
@@ -408,13 +358,7 @@
               }
             }
           },
-          "required": [
-            "id",
-            "type",
-            "parameters",
-            "negated",
-            "requirements"
-          ],
+          "required": ["id", "type", "parameters", "negated", "requirements"],
           "additionalProperties": false
         },
         {
@@ -444,13 +388,7 @@
               }
             }
           },
-          "required": [
-            "id",
-            "type",
-            "parameters",
-            "negated",
-            "requirements"
-          ],
+          "required": ["id", "type", "parameters", "negated", "requirements"],
           "additionalProperties": false
         },
         {
@@ -480,13 +418,7 @@
               }
             }
           },
-          "required": [
-            "id",
-            "type",
-            "parameters",
-            "negated",
-            "requirements"
-          ],
+          "required": ["id", "type", "parameters", "negated", "requirements"],
           "additionalProperties": false
         },
         {
@@ -506,9 +438,7 @@
                   "$ref": "https://causign.dev/schemas/scenario.schema.json#/definitions/JsonValue"
                 }
               },
-              "required": [
-                "value"
-              ],
+              "required": ["value"],
               "additionalProperties": false
             },
             "negated": {
@@ -522,13 +452,7 @@
               }
             }
           },
-          "required": [
-            "id",
-            "type",
-            "parameters",
-            "negated",
-            "requirements"
-          ],
+          "required": ["id", "type", "parameters", "negated", "requirements"],
           "additionalProperties": false
         },
         {
@@ -553,10 +477,7 @@
                   "minLength": 1
                 }
               },
-              "required": [
-                "evaluator",
-                "criteria"
-              ],
+              "required": ["evaluator", "criteria"],
               "additionalProperties": false
             },
             "negated": {
@@ -570,13 +491,7 @@
               }
             }
           },
-          "required": [
-            "id",
-            "type",
-            "parameters",
-            "negated",
-            "requirements"
-          ],
+          "required": ["id", "type", "parameters", "negated", "requirements"],
           "additionalProperties": false
         },
         {
@@ -597,9 +512,7 @@
                   "minimum": 0
                 }
               },
-              "required": [
-                "milliseconds"
-              ],
+              "required": ["milliseconds"],
               "additionalProperties": false
             },
             "negated": {
@@ -613,13 +526,7 @@
               }
             }
           },
-          "required": [
-            "id",
-            "type",
-            "parameters",
-            "negated",
-            "requirements"
-          ],
+          "required": ["id", "type", "parameters", "negated", "requirements"],
           "additionalProperties": false
         },
         {
@@ -643,10 +550,7 @@
                   "const": "USD"
                 }
               },
-              "required": [
-                "amount",
-                "currency"
-              ],
+              "required": ["amount", "currency"],
               "additionalProperties": false
             },
             "negated": {
@@ -660,13 +564,7 @@
               }
             }
           },
-          "required": [
-            "id",
-            "type",
-            "parameters",
-            "negated",
-            "requirements"
-          ],
+          "required": ["id", "type", "parameters", "negated", "requirements"],
           "additionalProperties": false
         }
       ]
@@ -712,9 +610,7 @@
           "minimum": 1
         }
       },
-      "required": [
-        "scenarioTimeoutMs"
-      ],
+      "required": ["scenarioTimeoutMs"],
       "additionalProperties": false
     },
     "ApprovalDecision": {
@@ -722,21 +618,15 @@
       "type": "object",
       "properties": {
         "decision": {
-          "enum": [
-            "grant",
-            "reject"
-          ],
+          "enum": ["grant", "reject"],
           "type": "string"
         },
         "input": {
           "$ref": "https://causign.dev/schemas/scenario.schema.json#/definitions/JsonValue"
         }
       },
-      "required": [
-        "decision"
-      ],
+      "required": ["decision"],
       "additionalProperties": false
     }
   }
 }
-

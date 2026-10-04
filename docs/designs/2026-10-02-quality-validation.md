@@ -12,15 +12,15 @@ Vercel tests cover unknown usage dimensions across steps, known zero, invalid in
 
 ## Fresh measurements
 
-| Measurement | Before | After |
-| --- | --- | --- |
-| Full tests | 404 passed, 1 skipped | 451 passed, 1 skipped |
-| Codex branches | 71.18% | 94.44% |
-| Vercel branches | 93.05% | 97.61% |
-| Codex statements/functions | 100% / 100% | 100% / 100% |
-| Vercel statements/functions | 100% / 100% | 100% / 100% |
-| Repository statements/lines | 93.08% | 93.08% |
-| Repository branches | 85.16% | 86.28% |
+| Measurement                 | Before                | After                 |
+| --------------------------- | --------------------- | --------------------- |
+| Full tests                  | 404 passed, 1 skipped | 451 passed, 1 skipped |
+| Codex branches              | 71.18%                | 94.44%                |
+| Vercel branches             | 93.05%                | 97.61%                |
+| Codex statements/functions  | 100% / 100%           | 100% / 100%           |
+| Vercel statements/functions | 100% / 100%           | 100% / 100%           |
+| Repository statements/lines | 93.08%                | 93.08%                |
+| Repository branches         | 85.16%                | 86.28%                |
 
 Codex translator branch coverage is 100%. Remaining Codex branches include unavailable launch/probe paths and optional discovery metadata short-circuit combinations. Vercel retains uncovered optional usage/response-content branches. These are not excluded to raise coverage. There is no new arbitrary coverage threshold.
 

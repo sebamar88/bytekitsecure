@@ -3,25 +3,28 @@
 Compatibility is deliberately narrow: `ai@7.0.127` is the exact peer and deterministic test version. Earlier or later releases are not claimed compatible. No provider package, live credentials, model catalog, or pricing configuration is required for the example.
 
 ```ts
-import { serveAgent } from '@causign/sdk';
-import { createVercelAdapter, vercelBridgeOptions } from '@causign/adapter-vercel';
+import { serveAgent } from "@causign/sdk";
+import {
+  createVercelAdapter,
+  vercelBridgeOptions,
+} from "@causign/adapter-vercel";
 // model and tools belong to the application.
 await serveAgent(createVercelAdapter({ model, tools }), vercelBridgeOptions);
 ```
 
 Input is declarative JSON: `{ "prompt": "hello" }`, or `{ "messages": [{ "role": "user", "content": "hello" }] }`. Exactly one field is required; messages accept user/assistant text only. Application options are `model` (a model object accepted by `wrapLanguageModel`), `tools`, optional `instructions`, and positive `maxSteps` (default 20). Output is `{ text: string }`. The handler runs the installed `ToolLoopAgent.generate`, with `isStepCount` and retries disabled. Provider errors are rethrown unchanged. AI SDK normally represents local tool exceptions as tool-error messages and can continue to a final answer; the Causign trace still records the real tool failure.
 
-| Capability | Implemented evidence |
-| --- | --- |
-| observe.output | Final generated text returned to serveAgent |
-| observe.messages | Submitted instructions/text input and each onStepEnd response.messages; SDK optional undefined fields removed for JSON transport |
-| observe.modelCalls | wrapLanguageModel.wrapGenerate surrounds each actual provider doGenerate call; model.completed precedes tool execution; failures preserve provider error |
-| observe.usage | Provider-reported input/output token totals summed across successful model calls; unknown fields omitted |
-| observe.toolRequests / observe.toolExecution / observe.toolResults / observe.toolRejections | AgentContext.callTool wraps local execute; selected mocks/rejections pause before execute |
-| intercept.tools | Runner decision determines mock/proceed/reject; a mock never invokes execute |
-| control.cancel | Bridge cancellation and provider abortSignal; tools receive original AI SDK execution options including abortSignal |
-| observe.cost | Unsupported; no price estimation or fabricated USD cost |
-| observe.approvals / control.approvals | Unsupported native integration; bridge helper disables both |
+| Capability                                                                                  | Implemented evidence                                                                                                                                     |
+| ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| observe.output                                                                              | Final generated text returned to serveAgent                                                                                                              |
+| observe.messages                                                                            | Submitted instructions/text input and each onStepEnd response.messages; SDK optional undefined fields removed for JSON transport                         |
+| observe.modelCalls                                                                          | wrapLanguageModel.wrapGenerate surrounds each actual provider doGenerate call; model.completed precedes tool execution; failures preserve provider error |
+| observe.usage                                                                               | Provider-reported input/output token totals summed across successful model calls; unknown fields omitted                                                 |
+| observe.toolRequests / observe.toolExecution / observe.toolResults / observe.toolRejections | AgentContext.callTool wraps local execute; selected mocks/rejections pause before execute                                                                |
+| intercept.tools                                                                             | Runner decision determines mock/proceed/reject; a mock never invokes execute                                                                             |
+| control.cancel                                                                              | Bridge cancellation and provider abortSignal; tools receive original AI SDK execution options including abortSignal                                      |
+| observe.cost                                                                                | Unsupported; no price estimation or fabricated USD cost                                                                                                  |
+| observe.approvals / control.approvals                                                       | Unsupported native integration; bridge helper disables both                                                                                              |
 
 `vercelCapabilities` is the exact advertised set when using `vercelBridgeOptions`. Always use that helper: generic serveAgent defaults have broader approval capabilities for custom handlers. The SDK adds `observeApprovals: false` to prevent approval observation/control promises for this adapter; inconsistent explicit control plus disabled observation is rejected. Disabled requestApproval fails before emitting an approval event. The adapter does not call approval APIs.
 

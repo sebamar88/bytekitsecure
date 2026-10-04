@@ -36,6 +36,7 @@ jobs:
           python-version: 3.12.10
           architecture: ${{ matrix.arch }}
       - run: pnpm install --frozen-lockfile
+      - run: pnpm format:check
       - run: pnpm check:generated
       - run: pnpm lint
       - run: pnpm typecheck

@@ -47,12 +47,12 @@ live scenarios require explicit provider environment configuration.
 
 The [actual workflow](../.github/workflows/ci.yml) covers:
 
-| Runner | Architecture |
-| --- | --- |
-| `ubuntu-latest` | x64 |
-| `windows-latest` | x64 |
-| `macos-15` | ARM64 |
-| `ubuntu-24.04-arm` | ARM64 |
+| Runner             | Architecture |
+| ------------------ | ------------ |
+| `ubuntu-latest`    | x64          |
+| `windows-latest`   | x64          |
+| `macos-15`         | ARM64        |
+| `ubuntu-24.04-arm` | ARM64        |
 
 Each job verifies Node architecture and runs frozen install, generated contracts,
 lint, typecheck, build, coverage and packed acceptance, with separate artifacts.

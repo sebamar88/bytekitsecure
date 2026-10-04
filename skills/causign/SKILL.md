@@ -40,12 +40,12 @@ mocks for regression tests; live model tests need explicit provider setup.
 
 ## Interpret evidence
 
-| Observation | Meaning |
-| --- | --- |
-| `tool.requested` | Intent, before execution |
-| `tool.started` | Real execution began |
-| `tool.completed` with `execution: "mock"` | Mock result; real tool did not run |
-| `tool.rejected` | Rejection; inspect its source and operation reference |
+| Observation                               | Meaning                                               |
+| ----------------------------------------- | ----------------------------------------------------- |
+| `tool.requested`                          | Intent, before execution                              |
+| `tool.started`                            | Real execution began                                  |
+| `tool.completed` with `execution: "mock"` | Mock result; real tool did not run                    |
+| `tool.rejected`                           | Rejection; inspect its source and operation reference |
 
 Capabilities use closed-world semantics: undeclared means unsupported. A
 missing required capability produces INCOMPATIBLE, not a failed assertion.

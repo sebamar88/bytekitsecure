@@ -13,7 +13,9 @@
     "check:generated": "node scripts/generate-types.mjs --check",
     "test:coverage": "tsc --build && vitest run --coverage",
     "test:packed": "tsc --build && node scripts/packed-smoke.mjs",
-    "lint": "oxlint --deny-warnings ."
+    "lint": "oxlint --deny-warnings .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@causign/adapter-vercel": "workspace:*",
@@ -23,6 +25,7 @@
     "ai": "7.0.127",
     "json-schema-to-typescript": "15.0.4",
     "oxlint": "1.86.0",
+    "prettier": "3.9.9",
     "typescript": "5.9.3",
     "vitest": "3.2.4"
   },

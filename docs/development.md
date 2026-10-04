@@ -2,21 +2,22 @@
 
 ## Workspace map
 
-| Directory | Responsibility |
-| --- | --- |
-| `packages/protocol` | Normative schemas, types, capabilities and lifecycle |
-| `packages/core` | Transport, plans, execution, assertions and results |
-| `packages/sdk` | Scenario DSL, mocks and bridge |
-| `packages/cli` | Discovery, starter generation and reports |
-| `packages/adapter-vercel` | Pinned AI SDK integration |
-| `fixtures` / `examples` | Deterministic processes and domains |
-| `scripts` | Type generation and acceptance |
-| `skills/causign` | Assistant guidance |
+| Directory                 | Responsibility                                       |
+| ------------------------- | ---------------------------------------------------- |
+| `packages/protocol`       | Normative schemas, types, capabilities and lifecycle |
+| `packages/core`           | Transport, plans, execution, assertions and results  |
+| `packages/sdk`            | Scenario DSL, mocks and bridge                       |
+| `packages/cli`            | Discovery, starter generation and reports            |
+| `packages/adapter-vercel` | Pinned AI SDK integration                            |
+| `fixtures` / `examples`   | Deterministic processes and domains                  |
+| `scripts`                 | Type generation and acceptance                       |
+| `skills/causign`          | Assistant guidance                                   |
 
 ## Checks
 
 ```sh
 pnpm install --frozen-lockfile
+pnpm format:check
 pnpm check:generated
 pnpm lint
 pnpm typecheck
@@ -39,6 +40,13 @@ Do not pass an extra literal `--` before Vitest file filters. Oxlint uses native
 default rules with warnings denied, not the separate StandardJS preset.
 
 ## Contracts and coverage
+
+Use `pnpm format` to format maintained source, configuration and documentation
+with the pinned Prettier version. `pnpm format:check` verifies formatting without
+writing files and runs in acceptance and publication CI. Defaults apply with LF
+line endings on every platform; dependencies, build output, coverage, runtime
+artifacts, scratch directories, the lockfile and generated protocol source are
+excluded. Generated source remains governed by `pnpm check:generated`.
 
 Edit schemas, run `pnpm generate`, and review generated types; do not edit those
 types by hand. Drift checks accept equivalent LF/CRLF endings.

@@ -3,17 +3,19 @@
 ## Declarative SDK
 
 ```ts
-import { agentTest, expect } from '@causign/sdk';
+import { agentTest, expect } from "@causign/sdk";
 
-export default agentTest('lookup returns fixture', {
-  id: 'lookup-fixture', agent: 'support', input: { customerId: 'fake' },
-  mocks: { lookup: { result: { customer: 'Ada' } } },
+export default agentTest("lookup returns fixture", {
+  id: "lookup-fixture",
+  agent: "support",
+  input: { customerId: "fake" },
+  mocks: { lookup: { result: { customer: "Ada" } } },
   timeoutMs: 5000,
   assertions: [
-    expect.tool('lookup').toHaveBeenRequested(),
-    expect.tool('lookup').toHaveBeenMocked(),
-    expect.tool('lookup').not.toHaveBeenExecuted(),
-    expect.output().toEqual({ customer: 'Ada' }),
+    expect.tool("lookup").toHaveBeenRequested(),
+    expect.tool("lookup").toHaveBeenMocked(),
+    expect.tool("lookup").not.toHaveBeenExecuted(),
+    expect.output().toEqual({ customer: "Ada" }),
   ],
 });
 ```
@@ -32,19 +34,19 @@ follow [the scenario schema](../packages/protocol/schemas/scenario.schema.json).
 
 ## Matchers
 
-| Expression | Required evidence |
-| --- | --- |
-| `expect.tool(name).toHaveBeenRequested()` | Tool intent |
-| `.toHaveBeenExecuted()` | Real execution started |
-| `.toHaveBeenCompleted()` | Successful real completion |
-| `.toHaveBeenMocked()` | Successful mock result and interception support |
-| `.toHaveBeenBlocked()` | Pre-execution rejection |
-| `expect.approval().toHaveBeenRequested()` | Approval request |
-| `.toHaveBeenGranted()` / `.toHaveBeenRejected()` | Approval resolution |
-| `expect.output().toEqual(value)` | Exact JSON output equality |
-| `expect.output().toSatisfy({ evaluator, criteria })` | Configured evaluator verdict |
-| `expect.run().toHaveLatencyLessThan(ms)` | Runner execution latency |
-| `expect.run().toHaveCostLessThan(amount)` | Explicit final USD cost |
+| Expression                                           | Required evidence                               |
+| ---------------------------------------------------- | ----------------------------------------------- |
+| `expect.tool(name).toHaveBeenRequested()`            | Tool intent                                     |
+| `.toHaveBeenExecuted()`                              | Real execution started                          |
+| `.toHaveBeenCompleted()`                             | Successful real completion                      |
+| `.toHaveBeenMocked()`                                | Successful mock result and interception support |
+| `.toHaveBeenBlocked()`                               | Pre-execution rejection                         |
+| `expect.approval().toHaveBeenRequested()`            | Approval request                                |
+| `.toHaveBeenGranted()` / `.toHaveBeenRejected()`     | Approval resolution                             |
+| `expect.output().toEqual(value)`                     | Exact JSON output equality                      |
+| `expect.output().toSatisfy({ evaluator, criteria })` | Configured evaluator verdict                    |
+| `expect.run().toHaveLatencyLessThan(ms)`             | Runner execution latency                        |
+| `expect.run().toHaveCostLessThan(amount)`            | Explicit final USD cost                         |
 
 Use `.not` to negate: `expect.tool('refund').not.toHaveBeenExecuted()`.
 Capabilities are inferred from matchers/mocks; `requirements` adds explicit
@@ -75,7 +77,9 @@ Register `citations: { module: './citations-evaluator.mjs' }` under config's
 `evaluators`, then assert:
 
 ```ts
-expect.output().toSatisfy({ evaluator: 'citations', criteria: 'Include citation IDs' })
+expect
+  .output()
+  .toSatisfy({ evaluator: "citations", criteria: "Include citation IDs" });
 ```
 
 ```js
@@ -83,8 +87,12 @@ expect.output().toSatisfy({ evaluator: 'citations', criteria: 'Include citation 
 export function createEvaluator(options) {
   return {
     async evaluate(output, criteria) {
-      const pass = Array.isArray(output?.citations) && output.citations.length > 0;
-      return { status: pass ? 'PASS' : 'FAIL', explanation: pass ? 'Citation IDs present' : 'No citation IDs' };
+      const pass =
+        Array.isArray(output?.citations) && output.citations.length > 0;
+      return {
+        status: pass ? "PASS" : "FAIL",
+        explanation: pass ? "Citation IDs present" : "No citation IDs",
+      };
     },
   };
 }
